@@ -13,7 +13,6 @@
 ## Estructura
 
 ```
-rojas-rozette-lab-dom/
 ├── README.md
 ├── index.html          // portada con enlaces
 ├── lab-dom/            // laboratorio guiado (partes 1, 2 y 3)
@@ -29,8 +28,6 @@ rojas-rozette-lab-dom/
 ```
 
 ## Tarea 4 · Formulario de inscripción
-
-JavaScript puro, sin librerías. Cómo cumple cada requisito:
 
 - **`novalidate`** en el formulario; los mensajes aparecen debajo de cada campo, nunca con `alert()`.
 - **Objeto `reglas`** con una regla por campo; una sola función **`validarCampo`** las aplica todas (incluye radios y checkbox).
