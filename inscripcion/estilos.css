@@ -1,0 +1,142 @@
+:root {
+  --fondo: #f4f3f8;
+  --superficie: #ffffff;
+  --tinta: #1d1b26;
+  --tenue: #5d5a6b;
+  --linea: #d9d6e3;
+  --marca: #5b2c83;
+  --marca-suave: #efe8f6;
+  --ok: #1d7f46;
+  --ok-suave: #e1f3e8;
+  --error: #c02b2b;
+  --error-suave: #fbe7e6;
+  --aviso: #b56a00;
+  --radio: 8px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--tinta);
+  font: 16px/1.5 "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+.encabezado {
+  background: var(--marca);
+  color: #fff;
+  padding: 28px 16px;
+  text-align: center;
+}
+.encabezado h1 { margin: 4px 0; font-size: clamp(26px, 5vw, 36px); }
+.encabezado .sup,
+.encabezado .sub { margin: 0; opacity: .85; font-size: 14px; }
+.encabezado .sup { text-transform: uppercase; letter-spacing: .08em; font-size: 12px; }
+
+.contenedor { max-width: 760px; margin: 24px auto; padding: 0 16px; }
+
+form {
+  background: var(--superficie);
+  border: 1px solid var(--linea);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.nota { margin: 0 0 16px; color: var(--tenue); font-size: 14px; }
+
+.grid { display: grid; grid-template-columns: 1fr; gap: 6px 20px; }
+@media (min-width: 640px) {
+  .grid { grid-template-columns: 1fr 1fr; }
+  .grid .full { grid-column: 1 / -1; }
+}
+
+.campo { margin: 0; padding: 0; border: 0; min-width: 0; }
+.campo > label,
+legend { display: block; font-weight: 600; font-size: 14px; margin-bottom: 4px; padding: 0; }
+.opcional { font-weight: 400; color: var(--tenue); }
+.hint { margin: 4px 0 0; font-size: 12.5px; color: var(--tenue); }
+
+input:not([type="radio"]):not([type="checkbox"]),
+select,
+textarea {
+  width: 100%;
+  font: inherit;
+  padding: 9px 11px;
+  border: 1.5px solid var(--linea);
+  border-radius: 6px;
+  background: #fff;
+  color: var(--tinta);
+}
+textarea { resize: vertical; }
+
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--marca);
+  outline-offset: 2px;
+}
+
+/* Estados de validación */
+[aria-invalid="true"]:not([type="radio"]):not([type="checkbox"]) {
+  border-color: var(--error);
+  background: var(--error-suave);
+}
+[aria-invalid="false"]:not([type="radio"]):not([type="checkbox"]) {
+  border-color: var(--ok);
+}
+[type="radio"][aria-invalid="true"],
+[type="checkbox"][aria-invalid="true"] { outline: 2px solid var(--error); outline-offset: 1px; }
+
+.error { color: var(--error); font-size: 13px; margin: 4px 0 8px; min-height: 1.2em; }
+
+/* Radios y checkbox */
+.opciones { display: flex; gap: 20px; flex-wrap: wrap; }
+.opcion { display: inline-flex; align-items: center; gap: 8px; font-weight: 400; cursor: pointer; }
+.opcion input { width: 18px; height: 18px; accent-color: var(--marca); }
+
+/* Medidor de fuerza */
+.medidor { height: 6px; border-radius: 3px; background: var(--linea); overflow: hidden; margin-top: 6px; }
+.medidor i { display: block; height: 100%; width: 0; background: var(--error); transition: width .2s, background .2s; }
+.medidor-lbl { font-size: 12px; color: var(--tenue); }
+
+/* Contador de comentarios */
+.contador { margin: 4px 0 0; font-size: 12.5px; color: var(--tenue); text-align: right; }
+.contador.cerca { color: var(--aviso); font-weight: 600; }
+.contador.excedido { color: var(--error); font-weight: 600; }
+
+/* Botones */
+.acciones { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+.btn {
+  font: 600 15px/1 inherit;
+  font-family: inherit;
+  padding: 11px 18px;
+  border-radius: 6px;
+  border: 1.5px solid var(--linea);
+  background: #fff;
+  color: var(--tinta);
+  cursor: pointer;
+}
+.btn:hover { border-color: var(--marca); }
+.btn.primario { background: var(--marca); border-color: var(--marca); color: #fff; }
+.btn.primario:hover { filter: brightness(1.1); }
+
+/* Tarjeta de confirmación */
+#confirmacion:empty { display: none; }
+#confirmacion { margin-top: 20px; }
+.tarjeta {
+  background: var(--ok-suave);
+  border: 1px solid var(--ok);
+  border-radius: 12px;
+  padding: 18px 20px;
+}
+.tarjeta h2 { margin: 0 0 4px; font-size: 20px; color: var(--ok); }
+.tarjeta .fecha-envio { margin: 0 0 12px; font-size: 13px; color: var(--tenue); }
+.tarjeta dl { display: grid; grid-template-columns: auto 1fr; gap: 4px 16px; margin: 0; font-size: 15px; }
+.tarjeta dt { color: var(--tenue); }
+.tarjeta dd { margin: 0; overflow-wrap: anywhere; }
+
+.pie { text-align: center; color: var(--tenue); font-size: 13px; padding: 16px 16px 32px; }
+
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }

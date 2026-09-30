@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lab DOM</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 760px; margin: 2rem auto; padding: 0 1rem; line-height: 1.5; }
+    section { border-top: 1px solid #ddd; padding-top: 1rem; margin-top: 1.5rem; }
+    .destacado { text-decoration: underline wavy #f2d64b; }
+    #tareas li { display: flex; gap: .5rem; align-items: center; margin: .25rem 0; }
+    #tareas li.hecha .texto { text-decoration: line-through; color: #888; }
+    .texto, .borrar { cursor: pointer; }
+    label { display: block; font-weight: 600; margin-top: .75rem; }
+    input { padding: .4rem; width: 100%; max-width: 320px; }
+    input[aria-invalid="true"] { border: 2px solid #c02b2b; background: #fbe7e6; }
+    input[aria-invalid="false"] { border: 2px solid #1d7f46; }
+    .error { color: #c02b2b; font-size: .9rem; min-height: 1.2em; margin: .2rem 0 0; }
+    #resumen { background: #e1f3e8; border: 1px solid #1d7f46; padding: .75rem 1rem; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <h1 id="titulo">Mi primera página dinámica</h1>
+  <ul id="lista"></ul>
+
+  <!-- Parte 2.1: botón para el evento click -->
+  <section>
+    <h2>2.1 · addEventListener</h2>
+    <button id="saludar" type="button">Saludar</button>
+    <p>Pulsa <kbd>Escape</kbd> en cualquier parte y revisa la consola.</p>
+  </section>
+
+  <!-- Parte 2.2: lista con delegación de eventos -->
+  <section>
+    <h2>2.2 · Delegación de eventos</h2>
+    <form id="form-tarea">
+      <input id="nueva-tarea" placeholder="Nueva tarea y Enter" autocomplete="off">
+      <button type="submit">Agregar</button>
+    </form>
+    <ul id="tareas">
+      <li><span class="texto">Leer sobre el DOM</span> <button class="borrar" type="button">×</button></li>
+      <li><span class="texto">Probar la delegación</span> <button class="borrar" type="button">×</button></li>
+    </ul>
+  </section>
+
+  <!-- Parte 2.3: preventDefault -->
+  <section>
+    <h2>2.3 · preventDefault</h2>
+    <form id="form-demo">
+      <label for="demo-nombre">Nombre</label>
+      <input id="demo-nombre" name="nombre" value="Miguel">
+      <label for="demo-ciudad">Ciudad</label>
+      <input id="demo-ciudad" name="ciudad" value="Panamá">
+      <button type="submit">Enviar (mira la consola)</button>
+    </form>
+  </section>
+
+  <!-- Parte 3: validación de formularios -->
+  <section>
+    <h2>3 · Validación</h2>
+    <form id="registro" novalidate>
+      <label for="nombre">Nombre</label>
+      <input id="nombre" name="nombre" required minlength="3"
+             aria-describedby="nombre-error">
+      <p id="nombre-error" class="error" aria-live="polite"></p>
+
+      <label for="correo">Correo</label>
+      <input id="correo" name="correo" type="email" required
+             aria-describedby="correo-error">
+      <p id="correo-error" class="error" aria-live="polite"></p>
+
+      <label for="cedula">Cédula</label>
+      <input id="cedula" name="cedula" required
+             pattern="([1-9]|1[0-3]|PE|E|N)-\d{1,4}-\d{1,6}"
+             placeholder="8-123-4567"
+             aria-describedby="cedula-error">
+      <p id="cedula-error" class="error" aria-live="polite"></p>
+
+      <label for="clave">Contraseña</label>
+      <input id="clave" name="clave" type="password" required
+             aria-describedby="clave-error">
+      <p id="clave-error" class="error" aria-live="polite"></p>
+
+      <label for="clave2">Confirmar contraseña</label>
+      <input id="clave2" name="clave2" type="password" required
+             aria-describedby="clave2-error">
+      <p id="clave2-error" class="error" aria-live="polite"></p>
+
+      <button type="submit">Crear cuenta</button>
+    </form>
+    <div id="resumen" aria-live="polite" hidden></div>
+  </section>
+
+  <!-- defer: el script corre cuando el HTML ya está cargado -->
+  <script src="app.js" defer></script>
+</body>
+</html>

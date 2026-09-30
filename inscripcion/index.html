@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Inscripción a cursos · FISC · UTP</title>
+  <link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+  <header class="encabezado">
+    <p class="sup">Universidad Tecnológica de Panamá</p>
+    <h1>Inscripción a cursos</h1>
+    <p class="sub">Facultad de Ingeniería de Sistemas Computacionales</p>
+  </header>
+
+  <main class="contenedor">
+    <form id="inscripcion" novalidate>
+      <p class="nota">Todos los campos son obligatorios, excepto <em>Comentarios</em>.</p>
+
+      <div class="grid">
+        <!-- Nombre completo -->
+        <div class="campo full">
+          <label for="nombre">Nombre completo</label>
+          <input id="nombre" name="nombre" autocomplete="name"
+                 required minlength="5" maxlength="60"
+                 placeholder="Ej.: María José Rodríguez"
+                 aria-describedby="nombre-error">
+          <p id="nombre-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <!-- Cédula -->
+        <div class="campo">
+          <label for="cedula">Cédula</label>
+          <input id="cedula" name="cedula" autocomplete="off" required
+                 pattern="([1-9]|1[0-3]|PE|E|N)-\d{1,4}-\d{1,6}"
+                 placeholder="8-123-4567"
+                 aria-describedby="cedula-hint cedula-error">
+          <p id="cedula-hint" class="hint">Provincia (1–13), PE, E o N, luego tomo y asiento.</p>
+          <p id="cedula-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <!-- Correo -->
+        <div class="campo">
+          <label for="correo">Correo electrónico</label>
+          <input id="correo" name="correo" type="email" autocomplete="email" required
+                 placeholder="nombre@dominio.com"
+                 aria-describedby="correo-error">
+          <p id="correo-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <!-- Celular -->
+        <div class="campo">
+          <label for="celular">Celular</label>
+          <input id="celular" name="celular" type="tel" inputmode="numeric" autocomplete="tel"
+                 required pattern="6\d{3}-?\d{4}" placeholder="6123-4567"
+                 aria-describedby="celular-error">
+          <p id="celular-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <!-- Fecha de nacimiento -->
+        <div class="campo">
+          <label for="nacimiento">Fecha de nacimiento</label>
+          <input id="nacimiento" name="nacimiento" type="date" required
+                 aria-describedby="nacimiento-error">
+          <p id="nacimiento-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <!-- Curso -->
+        <div class="campo full">
+          <label for="curso">Curso</label>
+          <select id="curso" name="curso" required aria-describedby="curso-error">
+            <option value="">Selecciona un curso</option>
+            <option value="ingenieria-web">Ingeniería Web</option>
+            <option value="desarrollo-software-1">Desarrollo de Software I</option>
+            <option value="estructura-datos-1">Estructura de Datos I</option>
+            <option value="bases-datos-1">Bases de Datos I</option>
+            <option value="redes-1">Redes de Computadoras I</option>
+            <option value="metodos-numericos">Métodos Numéricos para Ingeniería</option>
+          </select>
+          <p id="curso-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <!-- Modalidad -->
+        <fieldset class="campo full" id="grupo-modalidad">
+          <legend>Modalidad</legend>
+          <div class="opciones">
+            <label class="opcion"><input type="radio" name="modalidad" value="presencial" required
+                   aria-describedby="modalidad-error"> Presencial</label>
+            <label class="opcion"><input type="radio" name="modalidad" value="virtual"
+                   aria-describedby="modalidad-error"> Virtual</label>
+          </div>
+          <p id="modalidad-error" class="error" aria-live="polite"></p>
+        </fieldset>
+
+        <!-- Sede (solo si es presencial) -->
+        <div class="campo full" id="campo-sede" hidden>
+          <label for="sede">Sede</label>
+          <select id="sede" name="sede" aria-describedby="sede-error" disabled>
+            <option value="">Selecciona una sede</option>
+            <option>Ciudad de Panamá</option>
+            <option>David</option>
+            <option>Santiago</option>
+          </select>
+          <p id="sede-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <!-- Contraseña -->
+        <div class="campo">
+          <label for="clave">Contraseña</label>
+          <input id="clave" name="clave" type="password" autocomplete="new-password" required
+                 minlength="8" aria-describedby="clave-error fuerza-lbl">
+          <div class="medidor" aria-hidden="true"><i id="fuerza-barra"></i></div>
+          <span class="medidor-lbl" id="fuerza-lbl">Fuerza: —</span>
+          <p id="clave-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <!-- Confirmar contraseña -->
+        <div class="campo">
+          <label for="clave2">Confirmar contraseña</label>
+          <input id="clave2" name="clave2" type="password" autocomplete="new-password" required
+                 aria-describedby="clave2-error">
+          <p id="clave2-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <!-- Comentarios -->
+        <div class="campo full">
+          <label for="comentarios">Comentarios <span class="opcional">(opcional)</span></label>
+          <textarea id="comentarios" name="comentarios" rows="3"
+                    aria-describedby="comentarios-contador comentarios-error"></textarea>
+          <p class="contador" id="comentarios-contador" aria-live="polite">0 / 200</p>
+          <p id="comentarios-error" class="error" aria-live="polite"></p>
+        </div>
+
+        <!-- Términos -->
+        <div class="campo full">
+          <label class="opcion">
+            <input type="checkbox" id="terminos" name="terminos" required
+                   aria-describedby="terminos-error">
+            Acepto los términos y condiciones de inscripción.
+          </label>
+          <p id="terminos-error" class="error" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="acciones">
+        <button type="submit" class="btn primario">Inscribirme</button>
+        <button type="reset" class="btn">Limpiar</button>
+      </div>
+    </form>
+
+    <section id="confirmacion" aria-live="polite"></section>
+  </main>
+
+  <footer class="pie">Miguel Rojas y Jose Rozette · Ingeniería Web · Tarea 4</footer>
+
+  <script src="validacion.js" defer></script>
+</body>
+</html>
