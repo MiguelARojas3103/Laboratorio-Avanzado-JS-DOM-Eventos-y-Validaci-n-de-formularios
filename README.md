@@ -9,8 +9,8 @@
 ## Enlaces
 
 - **Repositorio:** https://github.com/MiguelARojas3103/Laboratorio-Avanzado-JS-DOM-Eventos-y-Validaci-n-de-formularios
-- **GitHub Pages (tarea):** https://miguelarojas3103.github.io/Laboratorio-Avanzado-JS-DOM-Eventos-y-Validaci-n-de-formularios/
-- **GitHub Pages (laboratorio guiado):** https://USUARIO.github.io/rojas-rozette-lab-dom/lab-dom/
+- **GitHub Pages (tarea):** https://miguelarojas3103.github.io/Laboratorio-Avanzado-JS-DOM-Eventos-y-Validaci-n-de-formularios/inscripcion/
+- **GitHub Pages (laboratorio guiado):** https://miguelarojas3103.github.io/Laboratorio-Avanzado-JS-DOM-Eventos-y-Validaci-n-de-formularios/lab-dom/
 
 ## Estructura
 
