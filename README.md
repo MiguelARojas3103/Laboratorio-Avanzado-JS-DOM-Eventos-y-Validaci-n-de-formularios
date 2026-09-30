@@ -1,8 +1,10 @@
 # Laboratorio DOM, eventos y validación de formularios
 
 **Estudiantes:** Miguel Rojas y Jose Rozette
+
 **Curso:** Ingeniería Web · Facultad de Ingeniería de Sistemas Computacionales · Universidad Tecnológica de Panamá
-**Profesora:** Dra. Elba Valderrama Bahamóndez
+
+**Profesora:** Elba Valderrama Bahamóndez
 
 ## Enlaces
 
