@@ -1,7 +1,6 @@
 // =====================================================
 // Tarea 4 · Validación de formularios del lado cliente
 // Inscripción a cursos · FISC · UTP
-// JS puro, sin librerías.
 // =====================================================
 
 const form = document.querySelector('#inscripcion');
